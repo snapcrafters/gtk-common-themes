@@ -41,6 +41,12 @@ slots:
         - $SNAP/share/icons/Solus
         - $SNAP/share/icons/communitheme
         - $SNAP/share/icons/Suru
+        - $SNAP/share/icons/ePapirus
+        - $SNAP/share/icons/Papirus
+        - $SNAP/share/icons/Papirus-Adapta
+        - $SNAP/share/icons/Papirus-Adapta-Nokto
+        - $SNAP/share/icons/Papirus-Dark
+        - $SNAP/share/icons/Papirus-Light
   sound-themes:
     interface: content
     source:
@@ -179,3 +185,11 @@ parts:
       set -eu
       cp -a /snap/communitheme/current/share $SNAPCRAFT_PART_INSTALL/
       rm -rf $SNAPCRAFT_PART_INSTALL/share/gnome-shell/
+
+  # Papirus: icon theme
+  papirus-theme:
+    plugin: make
+    source: https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git
+    make-parameters: [ PREFIX= ]
+    build-packages:
+      - gtk-update-icon-cache
